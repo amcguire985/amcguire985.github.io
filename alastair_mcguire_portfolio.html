@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alastair McGuire — Mechanical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #c49a6c;
+    --accent-dim: #a08060;
+    --accent-bg: #1a1510;
+    --accent-border: #3a2e1e;
+    --bg: #0a0a0f;
+    --bg-card: #0f0f18;
+    --border: #1e1e2e;
+    --text: #e2e2e8;
+    --muted: #666;
+    --subtle: #444;
+    --faint: #333;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    padding: 88px 48px 72px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, #a08060 39px, #a08060 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, #a08060 39px, #a08060 40px);
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+
+  .accent { color: var(--accent); }
+
+  .hero-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.85;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--subtle);
+    letter-spacing: 0.06em;
+    margin-top: 3px;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    padding: 52px 48px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* PROJECTS */
+  .projects {
+    padding: 0 48px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 30px;
+    transition: border-color 0.2s;
+  }
+
+  .project-card:hover { border-color: var(--accent-border); }
+
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--faint);
+    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  .project-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--subtle);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  h2.project-title {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .project-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .project-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #888;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 2px solid var(--accent-border);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+  }
+
+  /* METRICS STRIP */
+  .metrics {
+    display: flex;
+    gap: 24px;
+    margin: 18px 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .metric {
+    background: #13100a;
+    border: 1px solid var(--accent-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+
+  .metric-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .metric-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--subtle);
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    border-top: 1px solid var(--border);
+    padding: 56px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  h2.contact-heading {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  .contact-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+
+  .contact-link:hover { border-color: var(--accent-border); }
+
+  .cl-icon { font-size: 15px; color: var(--accent); flex-shrink: 0; }
+
+  .cl-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #888;
+    flex: 1;
+  }
+
+  .cl-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--subtle);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    .hero { padding: 56px 20px 48px; }
+    h1 { font-size: 36px; }
+    .projects { padding: 0 20px 40px; grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .contact-section { padding: 40px 20px; grid-template-columns: 1fr; }
+    footer { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
+    .section-header { padding: 36px 20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Alastair McGuire</div>
+  <ul class="nav-links">
+    <li><a href="#work">work</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">mechanical engineer</div>
+    <h1>
+      Complex systems.<br>
+      Built <span class="accent">right.</span>
+    </h1>
+    <p class="hero-desc">
+      MEng Engineering Science, Oxford. Experience delivering electromechanical
+      systems across healthcare, robotics, consumer, and industrial sectors —
+      from first concept through to manufacture. Passionate about robotics.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">projects shipped</div>
+      </div>
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">years consulting</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">patent contributions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-header" id="work">
+  <span class="section-title">selected work</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="projects">
+
+  <!-- FEATURED: ZELP -->
+  <div class="project-card featured">
+    <div>
+      <div class="project-num">01 — featured</div>
+      <div class="project-date">Mar 2025 – Sep 2025 · Zelp</div>
+      <h2 class="project-title">ZELP Sense Device</h2>
+      <p class="project-desc">
+        Transferred a cow-wearable methane emission measurement device from
+        demonstration prototype to production-ready design.
+      </p>
+      <p class="project-role">
+        Designed the under-neck electronics enclosure, neck strap, and safety
+        breakaway. Cut BoM cost by 60%, reduced assembly time from ~4 hrs to
+        ~0.5 hrs, and shrunk part count from ~500 to ~60.
+      </p>
+      <div class="tags">
+        <span class="tag">DfMA</span>
+        <span class="tag">injection moulding</span>
+        <span class="tag">sheet metal</span>
+        <span class="tag">DFMEA</span>
+        <span class="tag">tolerance analysis</span>
+        <span class="tag">Onshape API</span>
+        <span class="tag">poka-yoke</span>
+      </div>
+    </div>
+    <div>
+      <div class="metrics">
+        <div class="metric">
+          <span class="metric-val">60%</span>
+          <span class="metric-lbl">BoM cost reduction</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">8×</span>
+          <span class="metric-lbl">faster assembly</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">~60</span>
+          <span class="metric-lbl">parts (from ~500)</span>
+        </div>
+      </div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--subtle);line-height:1.7;">
+        Detailed design of injection moulded, cast, sheet metal, and compression
+        moulded parts. Tolerance analysis across all manufactured components.
+        Custom BoM management web app built on the Onshape API.
+      </p>
+    </div>
+  </div>
+
+  <!-- Surgical Robot -->
+  <div class="project-card">
+    <div class="project-num">02</div>
+    <div class="project-date">Sep 2023 – Mar 2024 · CDP</div>
+    <h2 class="project-title">Prototype surgical robot</h2>
+    <p class="project-desc">
+      Redesign of a surgical robot patient cart to reduce mass and footprint —
+      concept to working prototype in 6 months.
+    </p>
+    <p class="project-role">
+      Designed and assembled the robotic joint responsible for lifting a 70 kg
+      load over 1.5 m. Specified motor, magnetic brake, and ball screw; built
+      PoP rig; managed suppliers. Listed as inventor on patent application.
+    </p>
+    <div class="tags">
+      <span class="tag">electromechanical</span>
+      <span class="tag">SolidWorks</span>
+      <span class="tag">ball screw</span>
+      <span class="tag">belt drive</span>
+      <span class="tag">patent</span>
+    </div>
+  </div>
+
+  <!-- Novel Diagnostics -->
+  <div class="project-card">
+    <div class="project-num">03</div>
+    <div class="project-date">Jun – Dec 2024 · CDP</div>
+    <h2 class="project-title">Novel diagnostics instrument</h2>
+    <p class="project-desc">
+      Automating an existing diagnostics lab process into a benchtop instrument,
+      leading the cartridge and actuation test rig workstream.
+    </p>
+    <p class="project-role">
+      Risk-register-driven prototyping from quick exploratory rigs through to
+      representative assemblies. Facilitated a 20-person cross-functional
+      client workshop to define instrument requirements.
+    </p>
+    <div class="tags">
+      <span class="tag">rapid prototyping</span>
+      <span class="tag">fluid channels</span>
+      <span class="tag">laser welding</span>
+      <span class="tag">ideation facilitation</span>
+    </div>
+  </div>
+
+  <!-- Nicotine Pouch -->
+  <div class="project-card">
+    <div class="project-num">04</div>
+    <div class="project-date">Apr – May 2024 · CDP</div>
+    <h2 class="project-title">Child-resistant nicotine pouch container</h2>
+    <p class="project-desc">
+      Redesign of a nicotine pouch container — child-resistant yet usable for
+      dexterity-impaired adults. Three detailed designs delivered in 6 weeks,
+      leading to client patent applications.
+    </p>
+    <p class="project-role">
+      Lead designer: planned and facilitated ideation sessions, downselected
+      concepts, and produced detailed injection moulding CAD and drawings.
+    </p>
+    <div class="tags">
+      <span class="tag">concept generation</span>
+      <span class="tag">FDM prototyping</span>
+      <span class="tag">injection moulding</span>
+      <span class="tag">user-centred design</span>
+      <span class="tag">patent</span>
+    </div>
+  </div>
+
+  <!-- Infusion Pump -->
+  <div class="project-card">
+    <div class="project-num">05</div>
+    <div class="project-date">Mar – Sep 2023 · CDP</div>
+    <h2 class="project-title">Mechanical infusion pump</h2>
+    <p class="project-desc">
+      Developing used-like prototypes of infusion pump designs for user studies;
+      subsequent demonstrator requested for investor trade shows.
+    </p>
+    <p class="project-role">
+      Responsible for one design end-to-end — concept to finished prototype.
+      Iterated through multiple FDM prints per day using team 'mini design
+      reviews' to catch errors early.
+    </p>
+    <div class="tags">
+      <span class="tag">iterative design</span>
+      <span class="tag">3D printing</span>
+      <span class="tag">human factors</span>
+      <span class="tag">medical device</span>
+    </div>
+  </div>
+
+  <!-- Horse Racing -->
+  <div class="project-card">
+    <div class="project-num">06</div>
+    <div class="project-date">Sep 2022 – Jan 2023 · CDP spin-out</div>
+    <h2 class="project-title">Horse racing start gate sensor</h2>
+    <p class="project-desc">
+      Sole mechanical engineer for a spin-out: retrofittable sensor system to
+      accurately detect race start time on existing infrastructure.
+    </p>
+    <p class="project-role">
+      Full ownership from research and concepting through prototype manufacture,
+      data analysis, and assembly documentation for technician handover.
+    </p>
+    <div class="tags">
+      <span class="tag">open-ended brief</span>
+      <span class="tag">requirements management</span>
+      <span class="tag">BoM & WIs</span>
+      <span class="tag">prototype manufacture</span>
+    </div>
+  </div>
+
+</div>
+
+<section class="contact-section" id="contact">
+  <div>
+    <h2 class="contact-heading">Let's build<br><span class="accent">something.</span></h2>
+    <p class="contact-sub">
+      Mechanical engineer with consulting experience across
+      healthcare, robotics, consumer, and industrial sectors.
+      Actively looking for opportunities in robotics.
+    </p>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:alastairmcguire@hotmail.co.uk">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span class="cl-label">email</span>
+      <span class="cl-value">alastairmcguire@hotmail.co.uk</span>
+    </a>
+    <a class="contact-link" href="tel:+447854120224">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.22a16 16 0 0 0 6.29 6.29l1.56-1.56a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="cl-label">phone</span>
+      <span class="cl-value">+44 7854 120224</span>
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/alastair-mcguire" target="_blank">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <span class="cl-label">linkedin</span>
+      <span class="cl-value">alastair-mcguire</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">Alastair McGuire — mechanical engineering portfolio</span>
+  <span class="footer-copy">MEng Engineering Science, Oxford · 2026</span>
+</footer>
+
+</body>
+</html>
