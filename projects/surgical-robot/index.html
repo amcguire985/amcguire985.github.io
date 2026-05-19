@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype surgical robot — Alastair McGuire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/#work">work</a></li>
+    <li><a href="/#contact">contact</a></li>
+  </ul>
+</nav>
+
+<div class="project-header">
+  <a href="/#work" class="project-back">← back to projects</a>
+  <h1>Prototype surgical robot</h1>
+  <div class="project-meta">Sep 2023 – Mar 2024 · CDP</div>
+</div>
+
+<div class="project-overview">
+  <p class="project-intro">
+    Redesign of a surgical robot patient cart to reduce mass and footprint allowing for more manouvreability within hospital.
+    The cart needed to manipulate the instrument control unit (ICU) into various positions for different procedures.
+    The system allowed surgeons to perform more complex endoluminal surgeries, reducing risk to patients by avoiding incisions. 
+  </p>
+</div>
+
+<div class="project-content">
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <div class="image-container">[Placeholder: Robotic joint CAD assembly]</div>
+      <p class="image-caption">
+        Primary lift mechanism featuring ball screw actuator matched with stepper motor and magnetic
+        brake. Designed for precise unloaded descent and fail-safe halt on power loss.
+      </p>
+    </div>
+
+    <div class="gallery-item side-by-side">
+      <div>
+        <div class="image-container">[Placeholder: PoP test rig]</div>
+        <p class="image-caption">
+          Proof-of-principle rig built to validate mechanism performance under worst-case loading.
+          Iterated through 3 design cycles based on test results.
+        </p>
+      </div>
+      <div>
+        <div class="image-container">[Placeholder: Final prototype assembly]</div>
+        <p class="image-caption">
+          Final prototype assembly integrated into patient cart frame. Reduced mass by 15% and
+          footprint by 22% versus original design.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-text">
+    <div class="role-section">
+      <div class="role-label">My role</div>
+      <p class="role-text">
+        A client came to us looking for help developing the next iteration of their surgical robot.
+        The patient cart was too heavy to be pushed by hand, so required a motor and battery to move itself.
+        This added further mass and size, leading to issues in getting the robot between operating theatres in a hospital.
+        We proposed a redesign of the cart to reduce mass and footprint, enabling manual movement without motor assistance.
+        </br>
+        I owned the mechanical design of the primary lift mechanism, which was responsible for the vertical motion of the instrument control unit (ICU).
+        I started by writing subsystem requirements based on the system technical requirements.
+        I then used hand calculations and basic CAD models to specify the motor, brake, linear rails, and ball screw components.
+        These long-lead time items needed to be ordered early in the project, so it was critical to de-risk them.
+        I designed and built a proof-of-principle test rig to validate their performance under worst-case loading conditions.
+        </br>
+        I then moved on to detailed design of the CNC-machined aluminium sections that made up the structure of the vertical joint.
+        We only had time for a single iteration for these parts, so I relied on hand calculations, FEA, and planned mitigations to ensure they were stiff enough to meet the system technical requirements.
+        </br>
+        Finally, I assembled the prototype. I made precise modifications to the parts as required, tuned the linear rails and belt drive, and worked with the hardware team to integrate the electronics into the assembly.
+      </p>
+    </div>
+
+    <div class="role-section">
+      <div class="role-label">Key technical challenges</div>
+      <p class="role-text">
+        Successfully delivered a finished prototype on time that met requirements.
+        Client filed for an application for a patent on which I was listed as an inventor.
+        Generated key learnings for the next design iteration, communicated to client via in-depth presentation.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<section class="contact-section" id="contact">
+  <div>
+    <h2 class="contact-heading">Questions?<br><span class="accent">Get in touch.</span></h2>
+    <p class="contact-sub">
+      I'm happy to discuss this project or explore new opportunities.
+    </p>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:alastairmcguire@hotmail.co.uk">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span class="cl-label">email</span>
+      <span class="cl-value">alastairmcguire@hotmail.co.uk</span>
+    </a>
+    <a class="contact-link" href="tel:+447854120224">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.22a16 16 0 0 0 6.29 6.29l1.56-1.56a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="cl-label">phone</span>
+      <span class="cl-value">+44 7854 120224</span>
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/alastair-mcguire" target="_blank">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <span class="cl-label">linkedin</span>
+      <span class="cl-value">alastair-mcguire</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">Alastair McGuire — mechanical engineering portfolio</span>
+  <span class="footer-copy">MEng Engineering Science, Oxford · 2026</span>
+</footer>
+
+</body>
+</html>
