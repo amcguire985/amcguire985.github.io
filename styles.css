@@ -17,7 +17,7 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Syne', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.6;
 }
 
@@ -52,7 +52,7 @@ nav {
 }
 
 .nav-links a {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--accent);
   letter-spacing: 0.08em;
@@ -98,7 +98,7 @@ nav {
   align-items: center;
   justify-content: center;
   color: var(--subtle);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   text-align: center;
   padding: 20px;
@@ -112,7 +112,7 @@ nav {
 }
 
 .hero-tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--accent);
   letter-spacing: 0.14em;
@@ -142,7 +142,7 @@ h1 {
 .accent { color: var(--accent); }
 
 .hero-desc {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: var(--muted);
   line-height: 1.85;
@@ -163,7 +163,7 @@ h1 {
 }
 
 .stat-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--subtle);
   letter-spacing: 0.06em;
@@ -185,7 +185,7 @@ h1 {
   text-transform: uppercase;
   color: var(--subtle);
   white-space: nowrap;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .section-line {
@@ -222,7 +222,7 @@ h1 {
 }
 
 .project-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--faint);
   margin-bottom: 14px;
@@ -230,7 +230,7 @@ h1 {
 }
 
 .project-date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--subtle);
   margin-bottom: 8px;
@@ -245,7 +245,7 @@ h2.project-title {
 }
 
 .project-desc {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--muted);
   line-height: 1.75;
@@ -253,7 +253,7 @@ h2.project-title {
 }
 
 .project-role {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--accent);
   line-height: 1.7;
@@ -269,7 +269,7 @@ h2.project-title {
 }
 
 .tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--accent);
   background: var(--accent-bg);
@@ -305,7 +305,7 @@ h2.project-title {
 }
 
 .metric-lbl {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--subtle);
   letter-spacing: 0.04em;
@@ -329,7 +329,7 @@ h2.contact-heading {
 }
 
 .contact-sub {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--muted);
   line-height: 1.8;
@@ -357,14 +357,14 @@ h2.contact-heading {
 .cl-icon { font-size: 15px; color: var(--accent); flex-shrink: 0; }
 
 .cl-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--accent);
   flex: 1;
 }
 
 .cl-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--subtle);
 }
@@ -379,7 +379,7 @@ footer {
 }
 
 .footer-copy {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--faint);
 }
@@ -397,7 +397,7 @@ footer {
 }
 
 .project-overview .project-intro {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.6;
@@ -406,7 +406,7 @@ footer {
 }
 
 .project-back {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--accent);
   margin-bottom: 20px;
@@ -424,14 +424,14 @@ footer {
 }
 
 .project-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--subtle);
   margin-bottom: 24px;
 }
 
 .project-intro {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: var(--muted);
   line-height: 1.8;
@@ -452,7 +452,7 @@ footer {
 }
 
 .role-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: var(--subtle);
   letter-spacing: 0.08em;
@@ -461,7 +461,7 @@ footer {
 }
 
 .role-text {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--muted);
   line-height: 1.85;
@@ -501,7 +501,7 @@ footer {
   align-items: center;
   justify-content: center;
   color: var(--subtle);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
 }
 
@@ -512,7 +512,7 @@ footer {
 }
 
 .image-caption {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   color: var(--muted);
   line-height: 1.7;
@@ -532,7 +532,7 @@ footer {
   align-items: center;
   justify-content: center;
   color: var(--subtle);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   text-align: center;
 }
