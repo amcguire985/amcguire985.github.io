@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick and place without spilling | Alastair McGuire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/#work">work</a></li>
+    <li><a href="/#contact">contact</a></li>
+  </ul>
+</nav>
+
+<div class="project-header">
+  <a href="/#work" class="project-back">&larr; back to projects</a>
+  <h1>Pick and place without spilling</h1>
+  <div class="project-meta">Oct 2026 &middot; Independent project</div>
+  <a class="project-back" href="https://github.com/amcguire985/humanoid-internship-challenge">View code and full experiment details &rarr;</a>
+</div>
+<div class="project-overview">
+  <p class="project-intro">I developed a method that uses phone-recorded human demonstrations to adapt robot movement to task-specific constraints. A phone and printed markers make collecting movement data simple and inexpensive, with potential applications in carrying open containers, keeping samples upright, and assembling components that require specific orientation.</p>
+</div>
+<main class="project-content">
+  <div class="gallery">
+    <figure class="gallery-item">
+      <div class="image-container" style="aspect-ratio: auto;"><img src="annotated_demo.gif" alt="Phone demonstration with detected AprilTags and recovered object axes" style="height: auto;" loading="lazy"></div>
+      <figcaption class="image-caption">Phone-recorded demonstration with printed AprilTags on the table and object. The markers provide a fixed reference for recovering object position and orientation.</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <div class="image-container" style="aspect-ratio: auto;"><img src="human_reference.png" alt="Recovered position and orientation from the human demonstration" style="height: auto;" loading="lazy"></div>
+      <figcaption class="image-caption">Recovered object motion used to derive the carrying limits.</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <video controls muted playsinline preload="metadata" style="width: 100%; border-radius: 8px;" aria-label="B: simulation with liquid instruction only"><source src="B_simulation.mp4" type="video/mp4"><a href="B_simulation.mp4">Download simulation B</a></video>
+      <figcaption class="image-caption">B: the pretrained model receives the instruction that the bowl is full of liquid and must not spill.</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <video controls muted playsinline preload="metadata" style="width: 100%; border-radius: 8px;" aria-label="C: simulation with phone-derived movement limits"><source src="C_simulation.mp4" type="video/mp4"><a href="C_simulation.mp4">Download simulation C</a></video>
+      <figcaption class="image-caption">C: the same instruction with acceleration and tilt limits from the phone demonstration. Both of these matched runs complete placement.</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <a href="bc_transport_traces.png" class="image-container" style="aspect-ratio: auto;"><img src="bc_transport_traces.png" alt="Bowl acceleration and tilt traces comparing matched B and C carrying" style="height: auto;" loading="lazy"></a>
+      <figcaption class="image-caption">Actual bowl acceleration and tilt during carrying in the matched B/C comparison. Open the figure to inspect the traces.</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <div class="image-container"><img src="scripted-placement.png" alt="Panda robot after placing the bowl on the plate in an earlier scripted experiment" loading="lazy" style="object-fit: contain;"></div>
+      <figcaption class="image-caption">An earlier scripted experiment combined a recorded object path with programmed grasping and placement. This is separate from the pretrained-model comparison.</figcaption>
+    </figure>
+  </div>
+  <div class="project-text">
+    <section class="role-section">
+      <h2 class="role-label">My role</h2>
+      <p class="role-text">I tested the idea by adding a &ldquo;do not spill&rdquo; constraint to a bowl-to-plate task in LIBERO. I recorded myself moving a tagged object with a phone camera, then recovered its position and orientation using AprilTags. I focused on object motion because hand tracking was less reliable when markers were hidden.<br><br>The final approach uses the demonstration to set acceleration and tilt limits, rather than asking the robot to follow the video's exact path. The pretrained model still chooses the carrying direction and destination. Guidance adjusts its commands during carrying, while shared controls handle grasp retention, placement, and release. The model weights are unchanged.</p>
+    </section>
+    <section class="role-section">
+      <h2 class="role-label">Matched comparison</h2>
+      <p class="role-text">I compared the original task, an instruction that the bowl contained liquid, and that same instruction with phone-derived movement limits. Acceleration and tilt were used as measurable proxies for spill risk; spilling itself was not simulated.<br><br>In the matched B/C comparison shown here, maximum sampled bowl acceleration fell from 2.1 to 0.63 m/s&sup2;, a 69% reduction. Both runs completed placement. Maximum tilt stayed at approximately 14&deg; because the original movement already kept the bowl reasonably upright.<br><br>Each case represents one run. The original-task run provides context, but its controller settings differ from the matched B/C runs. The acceleration limit acts on commanded movement; the reported results measure actual bowl motion, which can differ because of contact and robot dynamics.</p>
+    </section>
+    <section class="role-section">
+      <h2 class="role-label">Repeated tests and limitations</h2>
+      <p class="role-text">I then compared B and C across five additional starting states, using the same model and shared controller settings for each pair. Human guidance reduced acceleration in all four pairs that reached carrying. The fifth pair did not reach carrying and has no acceleration or tilt measurements.</p>
+      <div style="overflow-x: auto; margin: 24px 0;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: var(--muted); text-align: left;">
+          <caption style="text-align: left; margin-bottom: 12px; color: var(--text);">Five additional starting states</caption>
+          <thead><tr><th scope="col" style="padding: 10px; border-bottom: 1px solid var(--border);">Metric</th><th scope="col" style="padding: 10px; border-bottom: 1px solid var(--border);">B: instruction only</th><th scope="col" style="padding: 10px; border-bottom: 1px solid var(--border);">C: human guidance</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" style="padding: 10px; font-weight: 400;">LIBERO task success</th><td style="padding: 10px;">4/5</td><td style="padding: 10px;">2/5</td></tr>
+            <tr><th scope="row" style="padding: 10px; font-weight: 400;">Successful placement after release</th><td style="padding: 10px;">4/5</td><td style="padding: 10px;">1/5</td></tr>
+            <tr><th scope="row" style="padding: 10px; font-weight: 400;">Mean maximum acceleration</th><td style="padding: 10px;">1.9 m/s&sup2;</td><td style="padding: 10px;">0.65 m/s&sup2;</td></tr>
+            <tr><th scope="row" style="padding: 10px; font-weight: 400;">Mean maximum tilt</th><td style="padding: 10px;">10&deg;</td><td style="padding: 10px;">9.9&deg;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="role-text">The mean maximum acceleration fell by 66%, while tilt remained similar. However, fewer completed placements mean the method has not yet achieved the full goal: careful movement and successful delivery.</p>
+    </section>
+    <section class="role-section">
+      <h2 class="role-label">Earlier experiments</h2>
+      <p class="role-text">Before testing movement limits, I adapted a recorded object path for a Panda arm and combined it with programmed grasping and placement. This completed all six tested bowl-start positions, with no retries, and achieved a path-tracking error of approximately 1.9 mm.<br><br>I recorded three successful runs, producing approximately 6,300 observation&ndash;action pairs. Two small models fitted the recorded actions but failed to reproduce the task: the single-action model completed 0/2 tests, and the action-sequence model completed 0/1. This led the project towards guiding a pretrained model at execution time.</p>
+    </section>
+    <section class="role-section">
+      <h2 class="role-label">What I would test next</h2>
+      <p class="role-text">I would first extend the time allowance without changing the controls, recording success both before and after the original deadline. This would separate timeouts from placement failures.<br><br>I would then compare movement at matched carrying durations to check whether the acceleration reduction comes from the guidance itself or simply from slower execution. A liquid simulation or physical test would be needed to assess spilling directly.</p>
+    </section>
+  </div>
+</main>
+<section class="contact-section" id="contact">
+  <div>
+    <h2 class="contact-heading">Questions?<br><span class="accent">Get in touch.</span></h2>
+    <p class="contact-sub">
+      I'm happy to discuss this project or explore new opportunities.
+    </p>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:alastairmcguire@hotmail.co.uk">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span class="cl-label">email</span>
+      <span class="cl-value">alastairmcguire@hotmail.co.uk</span>
+    </a>
+    <a class="contact-link" href="tel:+447854120224">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.22a16 16 0 0 0 6.29 6.29l1.56-1.56a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="cl-label">phone</span>
+      <span class="cl-value">+44 7854 120224</span>
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/alastair-mcguire-0b47b019a" target="_blank">
+      <svg class="cl-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <span class="cl-label">linkedin</span>
+      <span class="cl-value">alastair-mcguire-0b47b019a</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">Alastair McGuire | mechanical engineering portfolio</span>
+  <span class="footer-copy">MEng Engineering Science, Oxford · 2026</span>
+</footer>
+
+</body>
+</html>
